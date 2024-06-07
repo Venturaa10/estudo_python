@@ -33,19 +33,20 @@ class Programa:
 class Filme(Programa):
     '''Classe Filme está herdando da classe Programa'''
     def __init__(self, nome, ano, duracao):
-        self._nome = nome.title()
-        self.ano = ano
+        super().__init__(nome, ano)
+        '''Super -> Chamando o inicializador da classe Pai (Programa), para evitar repetições do metodo construtor, tendo que acrescentar atributos que já existem na classe Programa
+        O Super pode chamar qualquer metodo e atributo da classe Pai
+        '''
+        
         self.duracao = duracao
-        self._likes = 0
 
 
 class Serie(Programa):
     '''Classe Serie está herdando da classe Programa'''
     def __init__(self, nome, ano, temporadas):
-        self._nome = nome.title()
-        self.ano = ano
+        super().__init__(nome, ano)
         self.temporadas = temporadas
-        self._likes = 0
+
 
 
 vingadores = Filme('vingadores - guerra infinita', 2020, 160)
@@ -53,6 +54,7 @@ vingadores.dar_like()
 vingadores.dar_like()
 print(f'Nome: {vingadores.nome}\nAno: {vingadores.ano}\nDuração: {vingadores.duracao} Minutos\nLikes: {vingadores.likes}') 
 
+print('---------------------------------------------------')
 black_mirror = Serie('black mirror', 2022, 5)
 black_mirror.dar_like()
 black_mirror.dar_like()
