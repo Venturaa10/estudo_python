@@ -30,7 +30,7 @@ class Programa:
         self._nome = novo_nome.title()
 
     def __str__(self):
-        '''Representação textual do objeto'''
+        '''Representação textual do objeto, esse metodo retornara uma apresentação string do objeto'''
         return f'Nome: {self.nome}\nAno: {self.ano}\nLikes: {self.likes}'
 
 
@@ -56,20 +56,35 @@ class Serie(Programa):
     def __str__(self):
         return f'Nome: {self.nome}\nAno: {self.ano}\nTemporadas: {self.temporadas}\nLikes: {self.likes}'
 
+class Playlist(list):
+    '''A classe vai aceitar receber uma lista como argumento, pois agora Playlist é do tipo lista'''
+    def __init__(self, nome, programas):
+        self.nome = nome
+        super().__init__(programas)
 
 vingadores = Filme('vingadores - guerra infinita', 2020, 160)
-vingadores.dar_like()
-vingadores.dar_like()
-
-print('---------------------------------------------------')
 black_mirror = Serie('black mirror', 2022, 5)
-black_mirror.dar_like()
-black_mirror.dar_like()
-black_mirror.dar_like()
-black_mirror.dar_like()
+carros = Filme('Carros', 2019, 200)
+justiceiro = Serie('O Justiceiro', 2021, 8)
 
-filmes_e_series = [vingadores, black_mirror]
+vingadores.dar_like()
+vingadores.dar_like()
+black_mirror.dar_like()
+black_mirror.dar_like()
+black_mirror.dar_like()
+black_mirror.dar_like()
+carros.dar_like()
+carros.dar_like()
+justiceiro.dar_like()
+justiceiro.dar_like()
+justiceiro.dar_like()
 
-for programa in filmes_e_series:
+filmes_e_series = [vingadores, black_mirror, carros, justiceiro]
+tempo_livre = Playlist('Fim de Semana', filmes_e_series)
+
+print(f'Tamanho da Playlist: {len(tempo_livre)}\n')
+for programa in tempo_livre:
     print(programa)
     print('---------------------------------------------------')
+
+print(f'{ carros in tempo_livre}')
