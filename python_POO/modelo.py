@@ -29,6 +29,10 @@ class Programa:
     
         self._nome = novo_nome.title()
 
+    def __str__(self):
+        '''Representação textual do objeto'''
+        return f'Nome: {self.nome}\nAno: {self.ano}\nLikes: {self.likes}'
+
 
 class Filme(Programa):
     '''Classe Filme está herdando da classe Programa'''
@@ -39,7 +43,9 @@ class Filme(Programa):
         '''
         
         self.duracao = duracao
-
+        
+    def __str__(self):
+        return f'Nome: {self.nome}\nAno: {self.ano}\nDuração: {self.duracao} Min.\nLikes: {self.likes}'
 
 class Serie(Programa):
     '''Classe Serie está herdando da classe Programa'''
@@ -47,12 +53,13 @@ class Serie(Programa):
         super().__init__(nome, ano)
         self.temporadas = temporadas
 
+    def __str__(self):
+        return f'Nome: {self.nome}\nAno: {self.ano}\nTemporadas: {self.temporadas}\nLikes: {self.likes}'
 
 
 vingadores = Filme('vingadores - guerra infinita', 2020, 160)
 vingadores.dar_like()
 vingadores.dar_like()
-print(f'Nome: {vingadores.nome}\nAno: {vingadores.ano}\nDuração: {vingadores.duracao} Minutos\nLikes: {vingadores.likes}') 
 
 print('---------------------------------------------------')
 black_mirror = Serie('black mirror', 2022, 5)
@@ -61,4 +68,8 @@ black_mirror.dar_like()
 black_mirror.dar_like()
 black_mirror.dar_like()
 
-print(f'Nome: {black_mirror.nome}\nAno: {black_mirror.ano}\nTemporadas: {black_mirror.temporadas}\nLikes: {black_mirror.likes}')
+filmes_e_series = [vingadores, black_mirror]
+
+for programa in filmes_e_series:
+    print(programa)
+    print('---------------------------------------------------')
