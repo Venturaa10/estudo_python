@@ -1,3 +1,6 @@
+import os
+os.system('cls')
+
 # 'modelo' é o nome dado geralmente ao arquivo que irei trabalhar com classes
 
 class Programa:
@@ -56,12 +59,24 @@ class Serie(Programa):
     def __str__(self):
         return f'Nome: {self.nome}\nAno: {self.ano}\nTemporadas: {self.temporadas}\nLikes: {self.likes}'
 
-class Playlist(list):
+class Playlist:
     '''A classe vai aceitar receber uma lista como argumento, pois agora Playlist é do tipo lista'''
     def __init__(self, nome, programas):
         self.nome = nome
-        super().__init__(programas)
+        self._programas = programas
 
+    def __getitem__(self, item):
+        '''Metodo especial que permite que permite o os objetos se tornem acessiveis através de indices, como listas e dicionarios'''
+        return self._programas[item]
+
+    @property
+    def listagem(self):
+        return self._programas
+    
+    @property
+    def tamanho(self):
+        return len(self._programas)
+    
 vingadores = Filme('vingadores - guerra infinita', 2020, 160)
 black_mirror = Serie('black mirror', 2022, 5)
 carros = Filme('Carros', 2019, 200)
@@ -82,9 +97,9 @@ justiceiro.dar_like()
 filmes_e_series = [vingadores, black_mirror, carros, justiceiro]
 tempo_livre = Playlist('Fim de Semana', filmes_e_series)
 
+
 print(f'Tamanho da Playlist: {len(tempo_livre)}\n')
-for programa in tempo_livre:
+for programa in tempo_livre.listagem:
     print(programa)
     print('---------------------------------------------------')
 
-print(f'{ carros in tempo_livre}')
