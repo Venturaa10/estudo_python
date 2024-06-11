@@ -50,6 +50,7 @@ class Filme(Programa):
     def __str__(self):
         return f'Nome: {self.nome}\nAno: {self.ano}\nDuração: {self.duracao} Min.\nLikes: {self.likes}'
 
+
 class Serie(Programa):
     '''Classe Serie está herdando da classe Programa'''
     def __init__(self, nome, ano, temporadas):
@@ -58,6 +59,7 @@ class Serie(Programa):
 
     def __str__(self):
         return f'Nome: {self.nome}\nAno: {self.ano}\nTemporadas: {self.temporadas}\nLikes: {self.likes}'
+
 
 class Playlist:
     '''A classe vai aceitar receber uma lista como argumento, pois agora Playlist é do tipo lista'''
