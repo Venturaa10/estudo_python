@@ -73,8 +73,9 @@ class Playlist:
     def listagem(self):
         return self._programas
     
-    @property
-    def tamanho(self):
+
+    def __len__(self):
+        '''Com esse metodo, agora sempre que for chamado para fazer o len externo na listagem, vai obter o esse len da listagem interna, retornando o tamanho da lista '''
         return len(self._programas)
     
 vingadores = Filme('vingadores - guerra infinita', 2020, 160)
@@ -99,7 +100,8 @@ tempo_livre = Playlist('Fim de Semana', filmes_e_series)
 
 
 print(f'Tamanho da Playlist: {len(tempo_livre)}\n')
-for programa in tempo_livre.listagem:
+
+for programa in tempo_livre:
     print(programa)
     print('---------------------------------------------------')
 
