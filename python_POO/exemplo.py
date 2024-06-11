@@ -1,6 +1,9 @@
 # Exemplo simples para ver como funciona herança multipla
 
 class Funcionario:
+    def __init__(self, nome):
+        self.nome = nome 
+        
     def registra_horas(self, horas):
         print('Horas registradas...')
 
@@ -22,6 +25,12 @@ class Alura(Funcionario):
         print('Mostrando perguntas não respondidas do fórum')
 
 
+class Hipster:
+    '''Mixin, fornece metodos adicionais sem influenciar diretamente a hierarquia de herança principal, sendo instaciada por si só'''
+    def __str__(self):
+        return f'Hipster, {self.nome}'
+
+
 class Junior(Alura):
     pass
 
@@ -29,8 +38,11 @@ class Pleno(Alura, Caelum):
     '''Coloco entre virgulas quando tiver mais de uma classe a ser herdada'''
     pass
 
-class Senior(Caelum, Alura):
+class Senior(Alura, Caelum, Hipster):
     pass
+
+bruno = Senior('Bruno')
+print(bruno)
 
 vinicius = Junior() 
 vinicius.busca_perguntas_sem_resposta()
@@ -40,8 +52,8 @@ joao.busca_perguntas_sem_resposta()
 joao.busca_cursos_do_mes()
 joao.mostrar_tarefas() #Exibe o atributo em Alura devido a ordem que a class Pleno está herdando, sendo chamado primeiro Alura
 
-michele = Senior()
-michele.mostrar_tarefas() #Exibe o atributo em Caelum devido a ordem que a class Senior está herdando, sendo chamado primeiro Caelum
+michelle = Senior()
+michelle.mostrar_tarefas() #Exibe o atributo em Caelum devido a ordem que a class Senior está herdando, sendo chamado primeiro Caelum
 
 # MRO - Algoritmo
 # Pleno > Aura > Caelum (GoodHead)> Funcionario
