@@ -1,17 +1,29 @@
 class ExtratorURL:
+    ''' Classe responsavel por indentificar e extrair as informações da URL'''
     def __init__(self, url):
         self.url = self.sanitiza_url(url)
         self.valida_url()
 
     def sanitiza_url(self, url):
-        '''Remove espaços em brancos e caracteres especiais da url'''
-        return url.strip()
+        '''
+        Remove espaços em brancos e caracteres especiais da url
+        Caso o tipo da url seja diferente do tipo string, significa que a url está vazia, logo retornara como vazio para o metodo valida_url
+        '''
+        if type(url) == str:
+            return url.strip()
+        else:
+            return ''
+        
 
     def valida_url(self):
-        if self.url == '':
+        '''Quando não existir uma URL, vai retornar um ValueError
+        É recomendado verificar se uma string é vazia utilizando o "not"
+        '''
+        if not self.url:
             '''Retornando um erro ao usuario através do raise, se a url estiver vazia'''
             raise ValueError('A URL está vazia')
         
+
     def get_url_base(self):
         '''Separando a base e os parametros da url
         O metodo find caso tenho dois parametros: find(1º:2º), em caso de não localizar o segundo parametro tem como retorno: '-1'
@@ -40,6 +52,7 @@ class ExtratorURL:
             return valor
 
 
-extrator_url = ExtratorURL("bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar")
+# extrator_url = ExtratorURL("bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar")
+extrator_url = ExtratorURL(None)
 valor_quantidade = extrator_url.get_valor_parametro("quantidade")
 print(valor_quantidade)
