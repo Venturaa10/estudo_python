@@ -1,8 +1,21 @@
 import os
 os.system('cls')
 
-url = "bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar"
+# url = "bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar"
 # print(f'URL: {url}')
+url = ' '
+
+#Sanitização da URL
+url = url.replace(' ', '')
+# url = url.strip() -> Remove os espaços em brancos de toda a string
+# url = url.lstrip() -> Tira os espaços em brancos a esquerda da string
+# url = url.rstrip() -> Tira os espaços em brancos a direita da string
+
+#Validação da URL
+if url == '':
+    '''Retornando um erro ao usuario através do raise'''
+    raise ValueError('A URL está vazia')
+
 
 '''Separando a base e os parametros da url
 O metodo find caso tenho dois parametros: find(1º:2º), em caso de não localizar o segundo parametro tem como retorno: '-1'
