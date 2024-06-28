@@ -19,7 +19,7 @@ class ExtratorURL:
 
     def valida_url(self):
         '''Quando não existir uma URL, vai retornar um ValueError
-        É recomendado verificar se uma string é vazia utilizando o "not"
+        É recomendado verificar se uma string é vazia utilizando o "not" com a primeira validação
         '''
         if not self.url:
             '''Retornando um erro ao usuario através do raise, se a url estiver vazia'''
@@ -61,8 +61,33 @@ class ExtratorURL:
     def __len__(self):
         return len(self.url)
 
+    def __str__(self):
+        return f'URL: {self.url}\nURL Base: {self.get_url_base()}\nParametros: {self.get_url_parametro()}'
+
+    def __eq__(self, orther):
+        '''
+        Metodo especial para verificar se existe igualdade entre os objetos fornecidos
+        O primeiro parametro é o objeto atual, o segundo é outro objeto que será comparado
+           '''
+        return self.url == orther.url
+    
+
 url = "bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar"
 extrator_url = ExtratorURL(url)
+extrator_url2 = ExtratorURL(url)
+
+print(extrator_url == extrator_url2)
 print(f'O tamanho da URL: {len(extrator_url)}')
+print(extrator_url)
 valor_quantidade = extrator_url.get_valor_parametro("quantidade")
 print(valor_quantidade)
+
+''' Dois objetos podem ser iguais (O valor), mas não identicos (End. de Memoria diferentes )'''
+print(id(extrator_url)) # Imprimindo o endereço de memoria do objeto com o metodo "id"
+print(id(extrator_url2))
+
+'''Verificar se dois objetos são realmente identicos utilizando o metodo "is", ou seja, a comparação é feita entre o endereço de memoria dos objetos 
+"==" -> Verifica se os valores são equivalentes
+"is" -> Verifica se os dois objetos são o mesmo na memória
+'''
+1 is True
