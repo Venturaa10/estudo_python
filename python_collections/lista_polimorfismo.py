@@ -31,22 +31,67 @@ class ContaPoupanca(Conta):
         self._saldo -= 3
 
 class ContaInvestimento(Conta):
+    def passa_o_mes(self):
+        pass
+
+
+class ContaSalario:
+    def __init__(self, codigo):
+        self._codigo = codigo
+        self._saldo = 0
+
+    #  Metodo de verificação de igualdade
+    def __eq__(self, outro):
+        if type(outro) != ContaSalario:
+            return False
+        
+        # Verificação realizada através do codigo e do saldo da outra classe
+        # Ou seja, so retorna True, se o codigo e o saldo forem o mesmo de ambos os objetos
+        return self._codigo == outro._codigo and self._saldo == outro._saldo
+
+
+    def deposita(self, valor):
+        self._saldo += valor
+
+    def __str__(self):
+        return f"Código: {self._codigo} | Saldo {self._saldo}"
+
+
+class ContaMultiploSalario(ContaSalario):
     pass
 
-conta30 = ContaInvestimento(30) # Vai dar error nesse momento, pois não está incluída "passa_o_mes" na sua classe
+
+conta30 = ContaInvestimento(7) # Vai dar error nesse momento, pois não está incluída "passa_o_mes" na sua classe
 
 # Conta Conta Corrente
-conta16 = ContaCorrente(16)
+conta16 = ContaCorrente(6)
 conta16.deposita(1000)
 conta16.passa_o_mes()
 
 # Conta Conta Poupança
-conta20 = ContaPoupanca(20)
+conta20 = ContaPoupanca(5)
 conta20.deposita(1000)
 conta20.passa_o_mes()
+
+# Conta Corrente e Salario
+conta1 = ContaCorrente(37)
+conta1.deposita(110) 
+conta2 = ContaSalario(37)
+print(conta1)
+print(conta2)
+
+# Linhas retornando True, pois a classe ContaSalario tem um metodo de verificação de igualdade
+print(conta1 == conta2) 
+print(conta1 in [conta2]) 
+print(conta2 in [conta1]) 
+
 
 contas = [conta16, conta20]
 
 for conta in contas:
     print(conta)
+
+# Conta MultiplosSalarios
+print(isinstance(ContaCorrente(37), Conta)) # True
+print(isinstance(ContaCorrente(37), ContaCorrente)) # True
 
