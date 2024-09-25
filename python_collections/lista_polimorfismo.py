@@ -1,4 +1,5 @@
 from abc import ABCMeta, abstractmethod
+from operator import attrgetter
 
 class Conta(metaclass=ABCMeta):
 
@@ -95,3 +96,28 @@ for conta in contas:
 print(isinstance(ContaCorrente(37), Conta)) # True
 print(isinstance(ContaCorrente(37), ContaCorrente)) # True
 
+
+''' Teste '''
+conta_do_guilherme = ContaSalario(17)
+conta_do_guilherme.deposita(500)
+
+conta_da_daniela = ContaSalario(3)
+conta_da_daniela.deposita(1000)
+
+conta_do_paulo = ContaSalario(133)
+conta_do_paulo.deposita(510)
+
+contas2 = [conta_do_guilherme, conta_da_daniela, conta_do_paulo]
+
+print('\nTESTE COM A FUNÇÃO extrai_saldo\n')
+def extrai_saldo(conta):
+    '''A ordenação é baseada no saldo da conta'''
+    return conta._saldo
+
+for conta in sorted(contas2, key=extrai_saldo):
+    print(conta)
+
+# Ordenando utilizando o "attrgetter"
+# Ordenação baseada no saldo da conta, utilizando a função "attrgetter"
+for conta in sorted(contas2, key=attrgetter('_saldo')):
+    print(conta)
