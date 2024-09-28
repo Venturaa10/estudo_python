@@ -66,7 +66,7 @@ print(Counter(texto1)) # Conta quantas vezes cada letra apareceu
 print(Counter(texto1.split())) # Conta quantas vezes cada palavra apareceu
 print(Counter(texto1.lower())) # Conta quantas vezes cada letra minuscula apareceu
 '''
-def analisa_frequenccia_de_letras(texto):
+def analisa_frequencia_de_letras(texto):
     aparicoes = Counter(texto.lower()) # Armazena a contagem de quantidade de aparições de letras minusculas do texto
     total_aparicoes = sum(aparicoes.values()) # Armazena o total de letras do texto, somando todas as aparicoes
 
@@ -78,8 +78,8 @@ def analisa_frequenccia_de_letras(texto):
     for caractere, proporcao in mais_comuns:
         print(f'{caractere} => {proporcao * 100:.2f} %')
 
-analisa_frequenccia_de_letras(texto1)
-analisa_frequenccia_de_letras(texto2)
+analisa_frequencia_de_letras(texto1)
+analisa_frequencia_de_letras(texto2)
 
 
 
