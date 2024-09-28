@@ -1,3 +1,4 @@
+from collections import defaultdict, Counter
 '''
 usuarios_data_science = [15, 23, 43, 56]
 usuarios_machine_learning = [13, 23, 56, 42]
@@ -11,7 +12,6 @@ print(len(assistiram))
 
 print(set(assistiram))
 '''
-
 # Set -> Coleção não ordenada e sem duplicatas
 usuarios_data_science = {15, 23, 43, 56}
 usuarios_machine_learning = {13, 23, 56, 42}
@@ -59,3 +59,26 @@ usuarios2.add(25)
 meu_texto = "Bem vindo meu nome é João Victor eu gosto muito de futebol e tenho o meu gatos e gosto muito de gatos"
 print(meu_texto.split()) # Repete palavras
 print(set(meu_texto.split())) # Não repete palavras
+meu_texto = meu_texto.lower()
+
+# defaultdict -> Utilizado para trabalhar com um dicionario com valor padrão
+aparicoes = defaultdict(int)
+
+for palavra in meu_texto.split():
+    # Contando o número de vezes que uma palavra aparece
+    aparicoes[palavra] += 1
+
+
+print(aparicoes['vinicius']) # Retorna 0, por causa do "int", pois a cahve não existe no dicionario
+print(aparicoes)
+
+class Conta:
+    def __init__(self):
+        print('Criando uma conta')
+
+contas = defaultdict(Conta)
+print(contas[15])
+
+# Utilizando "Counter" para contar as aparições de palavras, em um codigo bem menor, comparado ao uso do for para a mesma finalidade
+aparicoes2 = Counter(meu_texto.split())
+print(aparicoes2)
