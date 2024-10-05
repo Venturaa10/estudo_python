@@ -33,3 +33,8 @@ class DatasBr:
     
     def __str__(self):
         return self.format_data()
+
+    def tempo_cadastro(self):
+        ''' Tempo de cadastro do usuario'''
+        tempo_cadastro = datetime.today() - self.momento_cadastro
+        return tempo_cadastro

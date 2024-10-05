@@ -11,7 +11,7 @@ print(cadastro.mes_cadastro())
 print(cadastro.dia_semana())
 print(cadastro)
 
-
+print(cadastro.tempo_cadastro())
 '''
 hoje = datetime.today()
 # Formatando para o formato BR
