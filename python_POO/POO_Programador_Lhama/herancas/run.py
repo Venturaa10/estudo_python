@@ -20,7 +20,7 @@ class Gato(Mamifero):
         super().__init__(localizacao)
 
     def miar(self):
-        print(f'O Gato está miando; Local: {self.localizacao} ')
+        print(f'O Gato está miando; Local: {self.localizacao}')
 
 dog = Cachorro('Espanha')
 dog.latir()
