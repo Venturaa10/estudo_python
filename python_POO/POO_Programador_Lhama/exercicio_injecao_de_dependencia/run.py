@@ -1,3 +1,4 @@
+''' Um objeto recebe suas dependências de outros objetos em vez de criá-las internamente'''
 class ConectorBancoDeDados:
     def __init__(self) -> None:
         self.connection = None
