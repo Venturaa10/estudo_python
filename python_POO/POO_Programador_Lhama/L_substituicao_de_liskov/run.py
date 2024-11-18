@@ -1,5 +1,5 @@
 # Quebra do principio de Liskov
-# Quando tem um comportamento diferente entre a mar e a classe filha
+# Quando tem um comportamento diferente entre a mae e a classe filha
 class Animal:
     def alimentar(self):
         print('O animal esta se alimentando...')
